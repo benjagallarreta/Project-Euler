@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// Considerando los términos de la secuencia de Fibonacci, encuentre la suma de los términos de valor par.
+
 long sum = 0;
 
 void SumEven(int n) {
@@ -10,8 +12,11 @@ void SumEven(int n) {
 
 void Fibonacci(int n) {
 
-    long a = 2, b = 1, c;
+    int a = 1, b = 2, c = 0;
     int i = 1;
+
+    SumEven(a);
+    SumEven(b);
 
     printf("%d\n", a);  
 
@@ -19,18 +24,21 @@ void Fibonacci(int n) {
         printf("%d\n", b);  
     }
 
-    while (c != 10){
-        c = a + b;  
-        a = b;      
-        b = c;      
-        printf("%d\n", c);  
+    while (1) {
+        c = a + b;
+        if (c > n) break;
+
+        printf("%d\n", c);
         SumEven(c);
-        i++;
+
+        a = b;
+        b = c;
     }
+    
 }
 
 int main() {
-    Fibonacci(40);
+    Fibonacci(10);
     printf("La suma es: %d\n",sum);
     return 0;
 }
